@@ -1,0 +1,44 @@
+<h1>Movies#index</h1>
+<p>Find me in app/views/movies/index.html.erb</p>
+
+
+<div class="container">
+<%= form_tag movies_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a movie"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div id="movies">
+        <% @movies.each do |movie| %>
+          <h4><%= movie.title %></h4>
+          <p><%= movie.syllabus %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- If I want to access the results of my PGSEARCH document -->
+<!-- If i want to get access to the infos of my instances in my view, i need to ieterate over the array
+# use the instance method searchable on each instance of pg:search instance
+results.each do |result|
+  puts result.searchable
+  <#% if result.searchable_type == "Movie" %>
+    <%#= result.searchable.title %>
+    <%#= result.searchable.director.name %>
+  <%# else serie = result.searchable %>
+    <%#= serie.title %>
+  <%# end %>
+end
+ -->
+
+
+
